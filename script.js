@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Polysphere',
             appToken: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
             promoId: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
-            timing: 20000, // 20 seconds
-            attempts: 20,
+            timing: 17000, // 18 seconds
+            attempts: 19,
         }
     };
 
