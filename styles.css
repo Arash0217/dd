@@ -1,161 +1,128 @@
-/* دارک مود */
+/* General Styles */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #1e1e1e; /* پس‌زمینه تیره */
-    color: #e0e0e0; /* رنگ متن روشن */
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f7fa;
+    color: #2c3e50;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-}
-
-.container {
-    background: #2c2c2c; /* پس‌زمینه کانتینر تیره */
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* سایه تیره‌تر */
-    padding: 30px;
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-}
-
-h1 {
-    margin-bottom: 25px;
-    font-size: 24px;
-    color: #ff6f00; /* رنگ نارنجی */
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.game-option {
-    border: 3px solid #ff6f00; /* نوار نارنجی */
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s, border-color 0.3s;
-    position: relative;
     overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* ایجاد اثر مات هنگام کلیک */
-.game-option.clicked img {
-    filter: blur(4px); /* مات کردن تصویر */
-}
-
-.game-option img {
+/* Container */
+.container {
+    background: linear-gradient(145deg, #ffffff 0%, #e6ebf1 100%);
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    padding: 35px;
+    max-width: 450px;
     width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    transition: filter 0.3s; /* اضافه کردن انیمیشن به مات شدن تصویر */
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
 }
 
-.game-option p {
-    font-weight: 500;
-    color: #e0e0e0; /* رنگ متن روشن */
+.container:hover {
+    transform: translateY(-10px);
 }
 
-.game-option:hover, .game-option.selected {
-    transform: scale(1.05);
-    border-color: #ff6f00; /* نوار نارنجی در حالت hover */
+/* Headings */
+h1 {
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #34495e;
+    letter-spacing: 1.5px;
+    background: linear-gradient(145deg, #3498db, #8e44ad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
+/* Form Group */
 .form-group {
     margin-bottom: 20px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #7f8c8d;
     text-align: left;
 }
 
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #e0e0e0; /* رنگ متن روشن */
-}
-
-.key-slider {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.key-slider input[type="range"] {
-    -webkit-appearance: none;
+/* Select Dropdown */
+select {
     width: 100%;
-    height: 8px;
-    border-radius: 5px;
-    background: #444; /* پس‌زمینه اسلایدر تیره‌تر */
-    outline: none;
-    transition: background 0.3s;
-}
-
-.key-slider input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #ff6f00; /* رنگ زبانه اسلایدر نارنجی */
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.key-slider input[type="range"]:hover::-webkit-slider-thumb {
-    background: #e65c00; /* رنگ زبانه اسلایدر در حالت hover */
-}
-
-#keyValue {
-    font-size: 18px;
-    font-weight: bold;
-    color: #ff6f00; /* رنگ نارنجی */
-}
-
-button {
-    background-color: #ff6f00; /* رنگ نارنجی */
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
+    padding: 14px;
+    font-size: 15px;
+    margin-bottom: 20px;
     border-radius: 8px;
+    border: 1px solid #dcdfe6;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background: #ecf0f1;
+    color: #2c3e50;
+    outline: none;
+}
+
+select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(145deg, #3498db 0%, #2980b9 100%);
+    color: #fff;
+    border: none;
+    padding: 15px 35px;
+    font-size: 16px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 20px;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-    background-color: #e65c00; /* رنگ نارنجی تیره‌تر */
+    background: linear-gradient(145deg, #2980b9 0%, #3498db 100%);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
+/* Hidden Elements */
 .hidden {
     display: none;
 }
 
+/* Progress Bar */
 .progress-bar {
-    background-color: #333; /* پس‌زمینه نوار پیشرفت تیره‌تر */
+    background-color: #dcdfe6;
     border-radius: 8px;
     overflow: hidden;
     margin-top: 25px;
-    height: 35px;
+    height: 12px;
     position: relative;
 }
 
 .progress-bar div {
     height: 100%;
-    background-color: #ff6f00; /* رنگ نارنجی */
+    background: linear-gradient(145deg, #3498db 0%, #2980b9 100%);
     width: 0;
-    transition: width 0.5s;
+    transition: width 0.5s ease-in-out;
 }
 
 #progressText {
     margin-top: 15px;
     font-weight: 600;
+    color: #7f8c8d;
 }
 
+/* Key Items */
 .key-item {
     display: flex;
     align-items: center;
@@ -164,37 +131,200 @@ button:hover {
 
 .key-item input {
     flex: 1;
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #555; /* رنگ مرز تیره‌تر */
+    padding: 14px;
+    font-size: 15px;
+    border: 1px solid #dcdfe6;
     border-radius: 8px;
     margin-right: 12px;
-    background-color: #333; /* پس‌زمینه ورودی تیره‌تر */
-    color: #e0e0e0; /* رنگ متن روشن */
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background: #ecf0f1;
+    color: #2c3e50;
+    outline: none;
 }
 
+.key-item input::placeholder {
+    color: #bdc3c7;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.key-item input:focus::placeholder {
+    opacity: 0;
+}
+
+.key-item input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+}
+
+/* Copy Button */
 .copyKeyBtn {
-    background-color: #28a745;
+    background: linear-gradient(145deg, #2ecc71 0%, #27ae60 100%);
     border: none;
-    padding: 12px 20px;
+    padding: 14px 30px;
     color: white;
-    font-size: 16px;
+    font-size: 15px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .copyKeyBtn:hover {
-    background-color: #218838;
+    background: linear-gradient(145deg, #27ae60 0%, #2ecc71 100%);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
+/* Footer */
 .footer {
-    margin-top: 25px;
+    margin-top: 30px;
     font-size: 14px;
-    color: #aaa; /* رنگ متن پایینی روشن‌تر */
+    color: #95a5a6;
+    text-align: center;
 }
 
+/* Copy Status */
 #copyStatus {
     margin-top: 15px;
-    color: #28a745; /* رنگ سبز */
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* Telegram Channel Button */
+#telegramChannelBtn {
+    background: linear-gradient(145deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    padding: 14px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+#telegramChannelBtn:hover {
+    background: linear-gradient(145deg, #c0392b 0%, #e74c3c 100%);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* GitHub Link */
+.github-link {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #3498db;
+    background: #f5f7fa;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.github-link: {
+    background: #3498db;
+    color: white;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f7fa;
+    color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Header to hold GitHub link */
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: right;
+    padding: 10px;
+}
+
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #2b2d42; /* Darker and modern */
+    color: #edf2f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container */
+.container {
+    background: linear-gradient(145deg, #3a3d52 0%, #2b2d42 100%);
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    padding: 35px;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #edf2f4;
+    letter-spacing: 1.5px;
+    background: linear-gradient(145deg, #8e44ad, #3498db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Update Select Dropdown */
+select {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #8d99ae;
+    background: #2b2d42;
+    color: #edf2f4;
+}
+
+select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(145deg, #3498db 0%, #2980b9 100%);
+    color: #fff;
+    padding: 15px 35px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background: linear-gradient(145deg, #2980b9 0%, #3498db 100%);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+.footer {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #8d99ae;
+    text-align: center;
 }
