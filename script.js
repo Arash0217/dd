@@ -296,3 +296,4 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.removeChild(textArea);
         }
     };
+});
