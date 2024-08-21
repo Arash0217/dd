@@ -48,7 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
             timing: 21000, // 21 seconds
             attempts: 15,
-    };
+    },
+};
 
     const gameOptions = document.querySelectorAll('.game-option');
     const keyCountGroup = document.getElementById('keyCountGroup');
