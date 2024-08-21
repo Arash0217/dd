@@ -3,51 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ایردراپ به فارسی</title>
+    <titleردراپ به فارسی</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <a href="https://t.me/AirdropBeFarsi" class="channel" target="_blank">کانال سازنده</a>
-    </header>
     <div class="container">
-        <h1>ایردراپ به فارسی</h1>
-        <div class="form-group">
-            <label for="gameSelect">انتخاب بازی</label>
-            <select id="gameSelect">
-                <option value="1">Riding Extreme 3D</option>
-                <option value="2">Chain Cube 2048</option>
-                <option value="3">My Clone Army</option>
-                <option value="4">Train Miner</option>
-                <option value="5">Merge Away</option>
-                <option value="6">Twerk Race 3D</option>
-                <option value="7">Polysphere</option>
-            </select>
+        <h1>سرور موقت</h1>
+        <div id="gameSelectContainer" class="grid-container">
+            <div class="game-option" data-game="6">
+                <img src="https://cdn.hamsterkombat.io/twerk/image.webp" alt="Twerk Race 3D">
+                <p>Twerk Race 3D</p>
+            </div>
+            <div class="game-option" data-game="5">
+                <img src="https://cdn.hamsterkombat.io/merge_away/image.webp" alt="Merge Away">
+                <p>Merge Away</p>
+            </div>
+            <div class="game-option" data-game="3">
+                <img src="https://cdn.hamsterkombat.io/my_clone_army/image.webp" alt="My Clone Army">
+                <p>My Clone Army</p>
+            </div>
+            <div class="game-option" data-game="2">
+                <img src="https://cdn.hamsterkombat.io/chain_cube/image.webp" alt="Chain Cube 2048">
+                <p>Chain Cube 2048</p>
+            </div>
+            <div class="game-option" data-game="4">
+                <img src="https://cdn.hamsterkombat.io/train_miner/image.webp" alt="Train Miner">
+                <p>Train Miner</p>
+            </div>
+            <div class="game-option" data-game="1">
+                <img src="https://cdn.hamsterkombat.io/bikeride/image.webp" alt="Bike Ride 3D">
+                <p>Bike Ride 3D</p>
+            </div>
         </div>
-        <div class="form-group">
-            <label id="keyCountLabel" for="keyCountSelect">تعداد کلید</label>
-            <select id="keyCountSelect">
-                <option value="2">2</option>
-                <option value="4">4</option>
-                <option value="6">6</option>
-            </select>
+
+        <div class="form-group hidden" id="keyCountGroup">
+            <label for="keyCountSelect">تعداد کلیـد</label>
+            <div id="keyCountSelect" class="key-slider">
+                <input type="range" min="1" max="6" value="1" id="keyRange">
+                <span id="keyValue">1</span>
+            </div>
         </div>
-        <button id="startBtn">بساز</button>
+        <button id="startBtn" class="hidden">شــروع | Start</button>
+
         <div id="progressContainer" class="hidden">
             <div class="progress-bar">
-                <div id="progressBar">منتظر بمانید</div>
+                <div id="progressBar">درحال انجام درخواست</div>
             </div>
-            <div id="progressText">0%</div>
-            <div id="progressLog">Starting...</div>
+            <p id="progressText">0%</p>
+            <p id="progressLog">در حال شروع..(ممکنه طول بکشه-صبور باشید)</p>
         </div>
+
         <div id="keyContainer" class="hidden">
-            <h3 id="generatedKeysTitle" class="hidden">کلید های شما</h3>
+            <h2 id="generatedKeysTitle" class="hidden">ساخت کلید</h2>
             <div id="keysList"></div>
-            <button id="copyAllBtn" class="hidden">کپی تمام کلید ها</button>
-            <div id="copyStatus" class="hidden">کپی شد</div>
-            <button id="generateMoreBtn">ساخت کلید بیشتر</button>
+            <button id="copyAllBtn" class="hidden">کپی کردن تمام کلید ها</button>
+        </div>
+
+        <p id="keyCountLabel</p>
+
+        <button id="generateMoreBtn" class="hidden">Generate More Keys</button>
+        <p id="copyStatus" class="hidden">تمام کلید ها کپی شدند</p>
+       
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
+
