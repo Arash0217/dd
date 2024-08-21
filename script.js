@@ -43,13 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
             attempts: 15,
         },
         7: {
-            name: 'Polys phere',
+            name: 'Polysphere',
             appToken: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
             promoId: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
-            timing: 21000, // 21 seconds
-            attempts: 19,
-    },
-};
+            timing: 20000, // 20 seconds
+            attempts: 20,
+        }
+    };
 
     const gameOptions = document.querySelectorAll('.game-option');
     const keyCountGroup = document.getElementById('keyCountGroup');
@@ -264,8 +264,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const generateUUID = () => {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
     };
