@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         7: {
             name: 'Polys phere',
-            appToken: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71'
+            appToken: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
             promoId: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
             timing: 21000, // 21 seconds
             attempts: 15,
