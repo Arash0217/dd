@@ -1,8 +1,7 @@
-/* دارک مود */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: hsl(0, 0%, 3%); /* پس‌زمینه تیره */
-    color: #f35b03; /* رنگ متن روشن */
+    background-color: #f5f7fa;
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,59 +10,51 @@ body {
 }
 
 .container {
-    background: hsl(202, 96%, 29%); /* پس‌زمینه کانتینر تیره */
+    background: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* سایه تیره‌تر */
-    padding: 20px; /* کاهش پدینگ کانتینر */
-    max-width: 350px; /* کاهش حداکثر عرض کانتینر */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 400px;
     width: 100%;
     text-align: center;
 }
 
 h1 {
-    margin-bottom: 20px; /* کاهش مارجین پایین عنوان */
-    font-size: 20px; /* کاهش اندازه فونت عنوان */
-    color: hwb(51 0% 0%); /* رنگ نارنجی */
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #007bff;
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px; /* کاهش فاصله بین آیتم‌ها */
-    margin-bottom: 15px; /* کاهش مارجین پایین گرید */
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
 .game-option {
-    border: 3px solid hwb(51 0% 0%); /* کاهش عرض نوار نارنجی */
-    border-radius: 8px; /* کاهش شعاع مرز */
-    padding: 8px; /* کاهش پدینگ آیتم‌ها */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
     text-align: center;
     cursor: pointer;
     transition: transform 0.3s, border-color 0.3s;
-    position: relative;
-    overflow: hidden;
-}
-
-.game-option.clicked img {
-    filter: blur(4px); /* مات کردن تصویر */
 }
 
 .game-option img {
     width: 100%;
-    border-radius: 6px; /* کاهش شعاع مرز تصویر */
-    margin-bottom: 8px; /* کاهش مارجین پایین تصویر */
-    transition: filter 0.3s; /* اضافه کردن انیمیشن به مات شدن تصویر */
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .game-option p {
     font-weight: 500;
-    color: #ff5a01; /* رنگ متن روشن */
-    font-size: 14px; /* کاهش اندازه فونت متن */
+    color: #555;
 }
 
 .game-option:hover, .game-option.selected {
     transform: scale(1.05);
-    border-color: #ff6f00; /* نوار نارنجی در حالت hover */
+    border-color: #007bff;
 }
 
 .form-group {
@@ -75,7 +66,7 @@ label {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
-    color: #e0e0e0; /* رنگ متن روشن */
+    color: #555;
 }
 
 .key-slider {
@@ -89,7 +80,7 @@ label {
     width: 100%;
     height: 8px;
     border-radius: 5px;
-    background: #444; /* پس‌زمینه اسلایدر تیره‌تر */
+    background: #ddd;
     outline: none;
     transition: background 0.3s;
 }
@@ -100,35 +91,35 @@ label {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #ff6f00; /* رنگ زبانه اسلایدر نارنجی */
+    background: #007bff;
     cursor: pointer;
     transition: background 0.3s;
 }
 
 .key-slider input[type="range"]:hover::-webkit-slider-thumb {
-    background: #e65c00; /* رنگ زبانه اسلایدر در حالت hover */
+    background: #0056b3;
 }
 
 #keyValue {
     font-size: 18px;
     font-weight: bold;
-    color: #ff6f00; /* رنگ نارنجی */
+    color: #007bff;
 }
 
 button {
-    background-color: #ff6f00; /* رنگ نارنجی */
+    background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 18px; /* کاهش پدینگ دکمه */
-    font-size: 14px; /* کاهش اندازه فونت دکمه */
-    border-radius: 6px; /* کاهش شعاع مرز دکمه */
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-top: 15px; /* کاهش مارجین بالا دکمه */
+    margin-top: 20px;
 }
 
 button:hover {
-    background-color: #e65c00; /* رنگ نارنجی تیره‌تر */
+    background-color: #0056b3;
 }
 
 .hidden {
@@ -136,7 +127,7 @@ button:hover {
 }
 
 .progress-bar {
-    background-color: #333; /* پس‌زمینه نوار پیشرفت تیره‌تر */
+    background-color: #f5f7fa;
     border-radius: 8px;
     overflow: hidden;
     margin-top: 25px;
@@ -146,7 +137,7 @@ button:hover {
 
 .progress-bar div {
     height: 100%;
-    background-color: #ff6f00; /* رنگ نارنجی */
+    background-color: #007bff;
     width: 0;
     transition: width 0.5s;
 }
@@ -166,11 +157,9 @@ button:hover {
     flex: 1;
     padding: 12px;
     font-size: 16px;
-    border: 1px solid #555; /* رنگ مرز تیره‌تر */
+    border: 1px solid #ccc;
     border-radius: 8px;
     margin-right: 12px;
-    background-color: #333; /* پس‌زمینه ورودی تیره‌تر */
-    color: #ffca09; /* رنگ متن روشن */
 }
 
 .copyKeyBtn {
@@ -191,10 +180,10 @@ button:hover {
 .footer {
     margin-top: 25px;
     font-size: 14px;
-    color: #aaa; /* رنگ متن پایینی روشن‌تر */
+    color: #777;
 }
 
 #copyStatus {
     margin-top: 15px;
-    color: #00506b; /* رنگ سبز */
+    color: green;
 }
