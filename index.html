@@ -1,81 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Генератор Ключей Hamster Kombat</title>
+    <title>Promo Key Generator</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
-    <main class="main-container">
-        <section class="language-selector">
-            <select id="languageSelect">
-                <option value="ru">Русский</option>
-                <option value="en">English</option>
-                <option value="sr">Српски</option>
-                <option value="be">Беларуская</option>
-                <option value="ar">العربية</option>
-                <option value="fa">فارسی</option>
-                <option value="es">Español</option>
-                <option value="fr">Français</option>
-                <option value="de">Deutsch</option>
-                <option value="it">Italiano</option>
-                <option value="pt">Português</option>
-                <option value="zh">简体中文</option>
-                <option value="ja">日本語</option>
-                <option value="ko">한국어</option>
-                <option value="hi">हिन्दी</option>
-                <option value="tr">Türkçe</option>
-                <option value="pl">Polski</option>
-            </select>
-        </section>
-        <section class="container">
-            <h1>Генератор Ключей Hamster Kombat</h1>
-            <label for="gameSelect" id="gameSelectLabel">Выберите игру для генерации ключа:</label>
+    <div class="main-container">
+        <div class="container">
+            <h1>Promo Key Generator</h1>
+            <div class="language-selector">
+                <label for="languageSelect">زبان:</label>
+                <select id="languageSelect">
+                    <option value="fa">فارسی</option>
+                    <option value="en">English</option>
+                    <!-- Add more languages as needed -->
+                </select>
+            </div>
+            <label for="gameSelect">بازی:</label>
             <select id="gameSelect">
-                <option value="ChainCube2048">Chain Cube 2048</option>
-                <option value="TrainMiner">Train Miner</option>
-                <option value="BikeRide3D">Bike Ride 3D</option>
-                <option value="MergeAway">Merge Away</option>
-                <option value="TwerkRace">Twerk Race</option>
+                <option value="MyCloneArmy">MyCloneArmy</option>
+                <option value="ChainCube2048">ChainCube2048</option>
+                <option value="TrainMiner">TrainMiner</option>
+                <option value="BikeRide3D">BikeRide3D</option>
+                <option value="MergeAway">MergeAway</option>
+                <option value="TwerkRace">TwerkRace</option>
                 <option value="Polysphere">Polysphere</option>
-                <option value="MowandTrim">Mow and Trim</option>
-                <option value="MudRacing">Mud Racing</option>
-                <option value="CafeDash">Cafe Dash</option>
+                <option value="MowandTrim">MowandTrim</option>
+                <option value="MudRacing">MudRacing</option>
+                <option value="CafeDash">CafeDash</option>
             </select>
-            <label for="keyCountSelect" id="keyCountLabel">Выберите количество ключей для генерации:</label>
+            <label for="keyCountSelect" id="keyCountLabel">تعداد کلیدها:</label>
             <select id="keyCountSelect">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
+                <!-- Add more options as needed -->
             </select>
-            <button id="startBtn" class="button">Сгенерировать ключи</button>
-            <div id="progressContainer" class="progress-container hidden">
-                <div id="progressBar" class="progress-bar"></div>
-                <span id="progressText" class="progress-text">0%</span>
+            <button id="startBtn" class="button">تولید کلیدها</button>
+            <div id="progressContainer" class="hidden">
+                <div class="progress-bar" id="progressBar"></div>
+                <div class="progress-text" id="progressText">0%</div>
             </div>
-            <div id="keyContainer" class="key-container hidden">
-                <h2 id="generatedKeysTitle">Сгенерированные ключи:</h2>
-                <button id="copyAllBtn" class="button hidden">Скопировать все ключи</button>
+            <div id="keyContainer" class="hidden">
+                <h2 id="generatedKeysTitle">کلیدهای تولید شده:</h2>
                 <div id="keysList" class="keys-list"></div>
             </div>
-        </section>
-        
-        <!-- افزودن دکمه‌های کانال و گروه سازنده -->
-        <section class="footer">
-            <button id="creatorChannelBtn" class="button footer-button" onclick="window.open('https://t.me/AirdropbeFarsi', '_blank')">چنل سازنده</button>
-            <button id="creatorGroupBtn" class="button footer-button" onclick="window.open('https://t.me/AirdropPro_fa', '_blank')">گروه سازنده</button>
-        </section>
-    </main>
+            <button id="copyAllBtn" class="hidden button">کپی تمام کلیدها</button>
+        </div>
+        <button id="creatorChannelBtn" class="footer-button">تیم</button>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
