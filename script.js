@@ -90,10 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const generateMoreBtn = document.getElementById('generateMoreBtn');
     const sourceCode = document.getElementById('sourceCode');
 
-    let selectedGame = null;
-
-    sourceCode.addEventListener('click', () => {
-        window.open('https://github.com/ShafiqSadat/HamsterKeyGenWeb', '_blank');
+    let selectedGame = 
     });
     
     gameOptions.forEach(option => {
