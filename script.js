@@ -276,9 +276,6 @@ document.getElementById('startBtn').addEventListener('click', async () => {
     startBtn.disabled = false;
 });
 
-document.getElementById('creatorChannelBtn').addEventListener('click', () => {
-    window.location.href = 'https://t.me/pdosi_project';
-});
 
 function generateClientId() {
     const timestamp = Date.now();
