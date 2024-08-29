@@ -1,7 +1,7 @@
-const defaultLanguage = document.documentElement.getAttribute('lang')
+const defaultLanguage = document.documentElement.getAttribute('lang');
 const gamePromoConfigs = {
     MyCloneArmy: {
-        appToken: '74ee0b5b-775e-4bee-974f-63e7f4d5bacb',
+        appToken: '74ee0b5b-775e-4bee-974f-63e7f4d5baccb',
         promoId: 'fe693b26-b342-4159-8808-15e3ff7f8767',
         eventsDelay: 120000,
         attemptsNumber: 11
@@ -53,7 +53,7 @@ const gamePromoConfigs = {
         promoId: '8814a785-97fb-4177-9193-ca4180ff9da8',
         eventsDelay: 20000,
         attemptsNumber: 20
-    }, 
+    },
     CafeDash: {
         appToken: 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11',
         promoId: 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11',
@@ -129,7 +129,7 @@ async function switchLanguage(language) {
     }
 }
 
-languageSelect.addEventListener('change', () => {
+document.getElementById('languageSelect').addEventListener('change', () => {
     const newLanguage = languageSelect.value;
     switchLanguage(newLanguage);
 });
@@ -211,167 +211,77 @@ document.getElementById('startBtn').addEventListener('click', async () => {
         }
     };
 
-    const keys = await Promise.all(Array.from({ length: keyCount }, generateKeyProcess));
+    const keys = [];
+    for (let i = 0; i < keyCount; i++) {
+        const key = await generateKeyProcess();
+        if (key) {
+            keys.push(key);
+            const li = document.createElement('li');
+            li.innerText = key;
+            keysList.appendChild(li);
+        }
+    }
 
     keygenActive = false;
-
-    progressBar.style.width = '100%';
-    progressText.innerText = '100%';
-
-    if (keys.length > 1) {
-        const keyItemsPromises = keys.filter(key => key).map(async (key, index) => {
-            const copyKeyButtonText = await getTranslation('copyKeyButton');
-            return `
-                <div class="key-item">
-                    <div class="key-number">${index + 1}</div>
-                    <input type="text" value="${key}" readonly>
-                    <button class="copyKeyBtn copy-button" data-key="${key}">${copyKeyButtonText}</button>
-                </div>
-            `;
-        });
-        const keyItemsHtml = await Promise.all(keyItemsPromises);
-        keysList.innerHTML = keyItemsHtml.join('');
-        copyAllBtn.classList.remove('hidden');
-    } else if (keys.length === 1) {
-        keysList.innerHTML = `
-            <div class="key-item">
-                <div class="key-number">1</div>
-                <input type="text" value="${keys[0]}" readonly>
-                <button class="copyKeyBtn copy-button" data-key="${keys[0]}">${await getTranslation('copyKeyButton')}</button>
-            </div>
-        `;
-    }
-
+    progressContainer.classList.add('hidden');
     keyContainer.classList.remove('hidden');
     generatedKeysTitle.classList.remove('hidden');
-    keyCountLabel.innerText = await getTranslation('selectKeyCountLabel');
+    copyAllBtn.classList.remove('hidden');
     document.getElementById("gameSelect").disabled = false;
-    document.querySelectorAll('.copyKeyBtn').forEach(button => {
-        button.addEventListener('click', (event) => {
-            const key = event.target.getAttribute('data-key');
-            navigator.clipboard.writeText(key).then(async () => {
-                event.target.innerText = await getTranslation('keyCopied');
-                event.target.style.backgroundColor = '#28a745';
-                setTimeout(async () => {
-                    event.target.innerText = await getTranslation('copyKeyButton');
-                    event.target.style.backgroundColor = '#6a0080';
-                }, 2000);
-            });
-        });
-    });
-    copyAllBtn.addEventListener('click', async (event) => {
-        const keysText = keys.filter(key => key).join('\n');
-        navigator.clipboard.writeText(keysText).then(async () => {
-            event.target.innerText = await getTranslation('allKeysCopied');
-            event.target.style.backgroundColor = '#28a745';
-            setTimeout(async () => {
-                event.target.innerText = await getTranslation('copyAllKeysButton');
-                event.target.style.backgroundColor = '#6a0080';
-            }, 2000);
-        });
-    });
-
     startBtn.classList.remove('hidden');
-    keyCountSelect.classList.remove('hidden');
     startBtn.disabled = false;
+    keyCountSelect.classList.remove('hidden');
+    keyCountLabel.innerText = await getTranslation('selectKeyCountLabel');
 });
 
+document.getElementById('copyAllBtn').addEventListener('click', () => {
+    const keysList = document.getElementById('keysList');
+    const keys = keysList.querySelectorAll('li');
+    const keysText = Array.from(keys).map(key => key.innerText).join('\n');
+    navigator.clipboard.writeText(keysText)
+        .then(() => alert('All keys copied to clipboard!'))
+        .catch(err => alert('Failed to copy keys: ' + err));
+});
 
-function generateClientId() {
-    const timestamp = Date.now();
-    const randomNumbers = Array.from({ length: 19 }, () => Math.floor(Math.random() * 10)).join('');
-    return `${timestamp}-${randomNumbers}`;
-}
-
-async function login(clientId) {
-    const response = await fetch('https://api.gamepromo.io/promo/login-client', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ appToken: currentAppConfig.appToken, clientId, clientOrigin: 'deviceid' })
-    });
-    const data = await response.json();
-    if (!response.ok) {
-        if (data.error_code == "TooManyIpRequest") {
-            throw new Error('You have reached the rate limit. Please wait a few minutes and try again.');
-        } else {
-            throw new Error(data.error_message || 'Failed to log in');
-        }
-        
-    }
-    return data.clientToken;
-}
-
-function generateUUID() {
-    if (typeof crypto.randomUUID === 'function') {
-        try {
-            return crypto.randomUUID();
-        } catch (error) {
-            console.warn('crypto.randomUUID() failed, falling back to old method.');
-        }
-    }
-
-    const cryptoObj = window.crypto || window.msCrypto;
-    if (cryptoObj && cryptoObj.getRandomValues) {
-        const bytes = new Uint8Array(16);
-        cryptoObj.getRandomValues(bytes);
-        bytes[6] = (bytes[6] & 0x0f) | 0x40;
-        bytes[8] = (bytes[8] & 0x3f) | 0x80;
-        return [
-            bytes.slice(0, 4).map(b => b.toString(16).padStart(2, '0')).join(''),
-            bytes.slice(4, 6).map(b => b.toString(16).padStart(2, '0')).join(''),
-            bytes.slice(6, 8).map(b => b.toString(16).padStart(2, '0')).join(''),
-            bytes.slice(8, 10).map(b => b.toString(16).padStart(2, '0')).join(''),
-            bytes.slice(10).map(b => b.toString(16).padStart(2, '0')).join('')
-        ].join('-');
-    } else {
-        console.warn('crypto.getRandomValues not supported. Falling back to a less secure method.');
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
-            return v.toString(16);
-        });
-    }
-}
-
-async function emulateProgress(clientToken) {
-    const response = await fetch('https://api.gamepromo.io/promo/register-event', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${clientToken}`
-        },
-        body: JSON.stringify({
-            promoId: currentAppConfig.promoId,
-            eventId: generateUUID(),
-            eventOrigin: 'undefined'
-        })
-    });
-    const data = await response.json();
-    // if (!response.ok) {
-    //     throw new Error(data.error_message || 'Failed to register event');
-    // }
-    return data.hasCode;
-}
-
-async function generateKey(clientToken) {
-    const response = await fetch('https://api.gamepromo.io/promo/create-code', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${clientToken}`
-        },
-        body: JSON.stringify({ promoId: currentAppConfig.promoId })
-    });
-    const data = await response.json();
-    if (!response.ok) {
-        throw new Error(data.error_message || 'Failed to generate key');
-    }
-    return data.promoCode;
+function delayRandom() {
+    return Math.random() * (1.1 - 0.9) + 0.9;
 }
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function delayRandom() {
-    return Math.random() / 3 + 1;
+async function login(clientId) {
+    const response = await fetch('https://api.example.com/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ clientId })
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Failed to log in');
+    return data.token;
+}
+
+async function emulateProgress(token) {
+    const response = await fetch('https://api.example.com/progress', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Failed to emulate progress');
+    return data.hasCode;
+}
+
+async function generateKey(token) {
+    const response = await fetch('https://api.example.com/generateKey', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Failed to generate key');
+    return data.key;
+}
+
+function generateClientId() {
+    return 'client-' + Math.random().toString(36).substr(2, 9);
 }
