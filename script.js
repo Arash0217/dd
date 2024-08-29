@@ -1,7 +1,7 @@
-const defaultLanguage = document.documentElement.getAttribute('lang');
+const defaultLanguage = document.documentElement.getAttribute('lang')
 const gamePromoConfigs = {
     MyCloneArmy: {
-        appToken: '74ee0b5b-775e-4bee-974f-63e7f4d5baccb',
+        appToken: '74ee0b5b-775e-4bee-974f-63e7f4d5bacb',
         promoId: 'fe693b26-b342-4159-8808-15e3ff7f8767',
         eventsDelay: 120000,
         attemptsNumber: 11
@@ -53,7 +53,7 @@ const gamePromoConfigs = {
         promoId: '8814a785-97fb-4177-9193-ca4180ff9da8',
         eventsDelay: 20000,
         attemptsNumber: 20
-    },
+    }, 
     CafeDash: {
         appToken: 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11',
         promoId: 'bc0971b8-04df-4e72-8a3e-ec4dc663cd11',
@@ -123,14 +123,14 @@ async function switchLanguage(language) {
         applyTranslations(translations);
         currentLanguage = language;
         localStorage.setItem('language', language);
-        languageSelect.value = language;
+        document.getElementById('languageSelect').value = language;
     } catch (error) {
         console.error('Error switching language:', error);
     }
 }
 
 document.getElementById('languageSelect').addEventListener('change', () => {
-    const newLanguage = languageSelect.value;
+    const newLanguage = document.getElementById('languageSelect').value;
     switchLanguage(newLanguage);
 });
 
@@ -211,77 +211,53 @@ document.getElementById('startBtn').addEventListener('click', async () => {
         }
     };
 
-    const keys = [];
-    for (let i = 0; i < keyCount; i++) {
-        const key = await generateKeyProcess();
-        if (key) {
-            keys.push(key);
-            const li = document.createElement('li');
-            li.innerText = key;
-            keysList.appendChild(li);
+    const generateAllKeys = async () => {
+        const keys = [];
+        for (let i = 0; i < keyCount; i++) {
+            const key = await generateKeyProcess();
+            if (key) {
+                keys.push(key);
+            } else {
+                break;
+            }
         }
-    }
 
-    keygenActive = false;
-    progressContainer.classList.add('hidden');
-    keyContainer.classList.remove('hidden');
-    generatedKeysTitle.classList.remove('hidden');
-    copyAllBtn.classList.remove('hidden');
-    document.getElementById("gameSelect").disabled = false;
-    startBtn.classList.remove('hidden');
-    startBtn.disabled = false;
-    keyCountSelect.classList.remove('hidden');
-    keyCountLabel.innerText = await getTranslation('selectKeyCountLabel');
+        if (keys.length > 0) {
+            keyContainer.classList.remove('hidden');
+            generatedKeysTitle.classList.remove('hidden');
+            copyAllBtn.classList.remove('hidden');
+            keysList.innerHTML = keys.map(key => `<li>${key}</li>`).join('');
+        }
+
+        progressContainer.classList.add('hidden');
+        keyCountSelect.classList.remove('hidden');
+        startBtn.classList.remove('hidden');
+        startBtn.disabled = false;
+        document.getElementById("gameSelect").disabled = false;
+        keygenActive = false;
+    };
+
+    generateAllKeys();
+    updateProgress(100);
 });
 
 document.getElementById('copyAllBtn').addEventListener('click', () => {
-    const keysList = document.getElementById('keysList');
-    const keys = keysList.querySelectorAll('li');
-    const keysText = Array.from(keys).map(key => key.innerText).join('\n');
-    navigator.clipboard.writeText(keysText)
-        .then(() => alert('All keys copied to clipboard!'))
-        .catch(err => alert('Failed to copy keys: ' + err));
+    const allKeysText = Array.from(document.querySelectorAll('#keysList li')).map(li => li.innerText).join('\n');
+    navigator.clipboard.writeText(allKeysText).then(() => {
+        alert('All keys copied to clipboard');
+    }).catch(err => {
+        console.error('Failed to copy keys: ', err);
+    });
 });
 
-function delayRandom() {
-    return Math.random() * (1.1 - 0.9) + 0.9;
+function generateClientId() {
+    return Math.random().toString(36).substr(2, 9);
 }
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function login(clientId) {
-    const response = await fetch('https://api.example.com/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ clientId })
-    });
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.message || 'Failed to log in');
-    return data.token;
-}
-
-async function emulateProgress(token) {
-    const response = await fetch('https://api.example.com/progress', {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${token}` }
-    });
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.message || 'Failed to emulate progress');
-    return data.hasCode;
-}
-
-async function generateKey(token) {
-    const response = await fetch('https://api.example.com/generateKey', {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${token}` }
-    });
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.message || 'Failed to generate key');
-    return data.key;
-}
-
-function generateClientId() {
-    return 'client-' + Math.random().toString(36).substr(2, 9);
+function delayRandom() {
+    return Math.random() * 0.5 + 0.5; // Random delay between 0.5 to 1.0
 }
