@@ -1,251 +1,200 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    box-sizing: border-box;
-}
-
+/* دارک مود */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #2c003e;
+    font-family: 'Roboto', sans-serif;
+    background-color: hsl(0, 0%, 3%); /* پس‌زمینه تیره */
+    color: #f35b03; /* رنگ متن روشن */
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    margin: 0;
-    position: relative;
-}
-
-.main-container {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    width: 90%;
-    max-width: 500px;
-    position: relative;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    height: 100vh;
+    margin: 0;
 }
 
 .container {
-    background-color: #1e0027;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(136, 3, 219, 0.713);
-    text-align: center;
-    box-sizing: border-box;
+    background: hsl(202, 96%, 29%); /* پس‌زمینه کانتینر تیره */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* سایه تیره‌تر */
+    padding: 30px;
+    max-width: 400px;
     width: 100%;
-    min-height: 100px;
+    text-align: center;
 }
 
 h1 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: hwb(51 0% 0%); /* رنگ نارنجی */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
     margin-bottom: 20px;
-    color: #e0b3ff;
+}
+
+.game-option {
+    border: 4px solid hwb(51 0% 0%); /* نوار نارنجی */
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ایجاد اثر مات هنگام کلیک */
+.game-option.clicked img {
+    filter: blur(4px); /* مات کردن تصویر */
+}
+
+.game-option img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: filter 0.3s; /* اضافه کردن انیمیشن به مات شدن تصویر */
+}
+
+.game-option p {
+    font-weight: 500;
+    color: #ff5a01; /* رنگ متن روشن */
+}
+
+.game-option:hover, .game-option.selected {
+    transform: scale(1.05);
+    border-color: #ff6f00; /* نوار نارنجی در حالت hover */
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
 }
 
 label {
     display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #d1a3ff;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #e0e0e0; /* رنگ متن روشن */
 }
 
-select {
-    padding: 10px;
-    width: 100%;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #4b006e;
-    color: #e0b3ff;
-    text-align-last: center;
-    font-size: large;
-}
-
-select option {
-    text-align: left;
-    font-size: medium;
-}
-
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #6a0080;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 5px;
-    transition: background-color 0.3s, transform 0.3s, color 0.3s;
-}
-
-.button:hover {
-    background-color: #4a004d;
-}
-
-.progress-container {
+.key-slider {
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    gap: 10px;
 }
 
-.progress-bar {
-    width: 0%;
+.key-slider input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #444; /* پس‌زمینه اسلایدر تیره‌تر */
+    outline: none;
+    transition: background 0.3s;
+}
+
+.key-slider input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
     height: 20px;
-    background-color: #8a00b0;
-    border-radius: 4px;
-    transition: width 0.3s;
+    border-radius: 50%;
+    background: #ff6f00; /* رنگ زبانه اسلایدر نارنجی */
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
-.progress-text {
-    margin-left: 10px;
+.key-slider input[type="range"]:hover::-webkit-slider-thumb {
+    background: #e65c00; /* رنگ زبانه اسلایدر در حالت hover */
+}
+
+#keyValue {
+    font-size: 18px;
     font-weight: bold;
-    color: #d1a3ff;
+    color: #ff6f00; /* رنگ نارنجی */
 }
 
-.key-container {
+button {
+    background-color: #ff6f00; /* رنگ نارنجی */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
     margin-top: 20px;
-    max-height: 400px;
-    overflow-y: auto;
-    width: 100%;
 }
 
-.key-container h2 {
-    color: #d1a3ff;
-}
-
-.keys-list {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-}
-
-.key-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    background-color: #2c003e;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    word-wrap: break-word;
-}
-
-.key-item input {
-    flex-grow: 1;
-    border: none;
-    background: transparent;
-    color: #e0b3ff;
-    font-size: 16px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.key-number {
-    display: inline-block;
-    text-align: center;
-    width: 40px;
-    padding: 10px 10px;
-    background-color: #6a0080;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 5px;
-}
-
-.key-item button {
-    margin-left: 10px;
-    background-color: #6a0080;
-    border: none;
-    padding: 10px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    color: white;
-    font-size: 14px;
-    transition: background-color 0.3s, transform 0.3s, color 0.3s;
-}
-
-.key-item button:hover {
-    background-color: #4a004d;
+button:hover {
+    background-color: #e65c00; /* رنگ نارنجی تیره‌تر */
 }
 
 .hidden {
     display: none;
 }
 
-.copy-status {
-    margin-top: 10px;
-    color: #d1a3ff;
-    font-weight: bold;
-}
-
-.language-selector {
+.progress-bar {
+    background-color: #333; /* پس‌زمینه نوار پیشرفت تیره‌تر */
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 25px;
+    height: 35px;
     position: relative;
-    top: 20px;
+}
+
+.progress-bar div {
+    height: 100%;
+    background-color: #ff6f00; /* رنگ نارنجی */
+    width: 0;
+    transition: width 0.5s;
+}
+
+#progressText {
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.key-item {
+    display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-top: 15px;
 }
 
-#languageSelect {
-    background-color: #4b006e;
-    color: #e0b3ff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    font-size: large;
-}
-
-.footer-button {
-    margin-top: 20px;
-    background-color: #6a0080;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 10px 20px;
+.key-item input {
+    flex: 1;
+    padding: 12px;
     font-size: 16px;
-    text-align: center;
-    width: 50%;
+    border: 1px solid #555; /* رنگ مرز تیره‌تر */
+    border-radius: 8px;
+    margin-right: 12px;
+    background-color: #333; /* پس‌زمینه ورودی تیره‌تر */
+    color: #ffca09; /* رنگ متن روشن */
 }
 
-@media (max-width: 480px) {
-    h1 {
-        font-size: 24px;
-    }
+.copyKeyBtn {
+    background-color: #28a745;
+    border: none;
+    padding: 12px 20px;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-    label, .button {
-        font-size: 14px;
-    }
+.copyKeyBtn:hover {
+    background-color: #218838;
+}
 
-    select, .button {
-        padding: 8px 16px;
-        font-size: 14px;
-    }
+.footer {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #aaa; /* رنگ متن پایینی روشن‌تر */
+}
 
-    .footer-button {
-        font-size: 14px;
-        padding: 8px;
-        width: 100%;
-    }
-
-    .main-container {
-        width: 100%;
-    }
-
-    .container {
-        padding: 15px;
-    }
-
-    .language-selector {
-        top: 10px;
-        right: 10px;
-    }
+#copyStatus {
+    margin-top: 15px;
+    color: #00506b; /* رنگ سبز */
 }
