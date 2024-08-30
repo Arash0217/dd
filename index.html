@@ -3,85 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>ایردراپ به فارسی</title>
+    <title>Генератор Ключей Hamster Kombat</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <h1> VIP | ایردراپ به فارسـی</h1>
-        <br></br>
-        <h2>@ Airdrop Be Farsi VIP </h2>
-        <div id="gameSelectContainer" class="grid-container">
-            <div class="game-option" data-game="10">
-            <img src="https://cdn.hamsterkombat.io/cafe_dash/image.webp" alt="CafeDash">
-            <p>Cafe Dash</p>
+    <main class="main-container">
+        <section class="language-selector">
+            <select id="languageSelect">
+                <option value="ru">Русский</option>
+                <option value="en">English</option>
+                <option value="sr">Српски</option>
+                <option value="be">Беларуская</option>
+                <option value="ar">العربية</option>
+                <option value="fa">فارسی</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="it">Italiano</option>
+                <option value="pt">Português</option>
+                <option value="zh">简体中文</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+                <option value="hi">हिन्दी</option>
+                <option value="tr">Türkçe</option>
+                <option value="pl">Polski</option>
+            </select>
+        </section>
+        <section class="container">
+            <h1>AirdropBeFarsi</h1>
+            <label for="gameSelect" id="gameSelectLabel">انتخاب کن</label>
+            <select id="gameSelect">
+                <option value="ChainCube2048">Chain Cube 2048</option>
+                <option value="TrainMiner">Train Miner</option>
+                <option value="MergeAway">Merge Away</option>
+                <option value="TwerkRace">Twerk Race</option>
+                <option value="Polysphere">Polysphere</option>
+                <option value="MowandTrim">Mow and Trim</option>
+                <option value="CafeDash">Cafe Dash</option>
+                <option value="GangsWars">Gangs Wars</option>
+                <option value="Zoopolis">Zoopolis</option>
+            </select>
+            <label for="keyCountSelect" id="keyCountLabel">تعداد کلید</label>
+            <select id="keyCountSelect">
+                <option value="4">4</option>
+                <option value="6">6</option>
+                <option value="8">8</option>
+                <option value="10">10</option>
+            </select>
+            <button id="startBtn" class="button">شروع ساخت</button>
+            <div id="progressContainer" class="progress-container hidden">
+                <div id="progressBar" class="progress-bar">درحال شروع</div>
+                <span id="progressText" class="progress-text">0%</span>
             </div>
-          <div class="game-option" data-game="9">
-            <img src="https://cdn.hamsterkombat.io/mud_racing/image.webp" alt="Polysphere">
-            <p>Mud Racing</p>
+            <div id="keyContainer" class="key-container hidden">
+                <h2 id="generatedKeysTitle">کلید های شما</h2>
+                <button id="copyAllBtn" class="button hidden">کپی کردن همه</button>
+                <div id="keysList" class="keys-list"></div>
             </div>
-            <div class="game-option" data-game="8">
-            <img src="https://cdn.hamsterkombat.io/mow_trim/image.webp" alt="Polysphere">
-            <p>Mow and Trim</p>
-            </div>
-            <div class="game-option" data-game="7">
-            <img src="https://cdn.hamsterkombat.io/polysphere/image.webp" alt="Polysphere">
-            <p>Polysphere</p>
-            </div>
-            <div class="game-option" data-game="6">
-                <img src="https://cdn.hamsterkombat.io/twerk/image.webp" alt="Twerk Race 3D">
-                <p>Twerk Race 3D</p>
-            </div>
-            <div class="game-option" data-game="5">
-                <img src="https://cdn.hamsterkombat.io/merge_away/image.webp" alt="Merge Away">
-                <p>Merge Away</p>
-            </div>
-            <div class="game-option" data-game="2">
-                <img src="https://cdn.hamsterkombat.io/chain_cube/image.webp" alt="Chain Cube 2048">
-                <p>Chain Cube 2048</p>
-            </div>
-            <div class="game-option" data-game="4">
-                <img src="https://cdn.hamsterkombat.io/train_miner/image.webp" alt="Train Miner">
-                <p>Train Miner</p>
-            </div>
-            <div class="game-option" data-game="1">
-                <img src="https://cdn.hamsterkombat.io/bikeride/image.webp" alt="Bike Ride 3D">
-                <p>Bike Ride 3D</p>
-            </div>
-        </div>
-
-        <div class="form-group hidden" id="keyCountGroup">
-           <label for="keyCountSelect">تعداد کلیـد</label>
-            <div id="keyCountSelect" class="key-slider">
-                <input type="range" min="1" max="8" value="1" id="keyRange">
-                <span id="keyValue">1</span>
-            </div>
-        </div>
-        <button id="startBtn" class="hidden">ساخـت کـلید</button>
-
-        <div id="progressContainer" class="hidden">
-            <div class="progress-bar">
-                <div id="progressBar"></div>
-            </div>
-            <p id="progressText">0%</p>
-            <p id="progressLog">Starting...</p>
-        </div>
-
-         <div id="keyContainer" class="hidden">
-            <h2 id="generatedKeysTitle" class="hidden">ساخت کلید</h2>
-            <div id="keysList"></div>
-            <button id="copyAllBtn" class="hidden">کپی کردن تمام کلید ها</button>
-        </div>
-
-        <p id="keyCountLabel">تعداد کلید ها</p>
-
-        <button id="generateMoreBtn" class="hidden">Generate More Keys</button>
-        <p id="copyStatus" class="hidden">تمام کلید ها کپی شدند</p>
-        
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+        </section>
+        <button id="creatorChannelBtn" class="button footer-button">Powered AirdropBeFarsi</button>
+    </main>
 </body>
 </html>
