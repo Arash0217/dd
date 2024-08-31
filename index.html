@@ -9,9 +9,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>Game Promo Code Generator</h1>
+        <h1>ایردراپ به فارسی</h1>
         <div class="form-group">
-            <label for="gameSelect">Select Game</label>
+            <label for="gameSelect">انتخاب بازی</label>
             <select id="gameSelect">
                 <option value="1">ZooPolis (new)</option>
                 <option value="2">Chain Cube 2048</option>
@@ -27,7 +27,7 @@
             </select>
         </div>
 
-        <div id="google_translate_element"></div>
+        <div id="google_translate_element">language</div>
         <script type="text/javascript">
             function googleTranslateElementInit() {
                 new google.translate.TranslateElement({
@@ -43,7 +43,7 @@
 
         
         <div class="form-group">
-            <label id="keyCountLabel" for="keyCountSelect">Number of keys:</label>
+            <label id="keyCountLabel" for="keyCountSelect">تعداد کلید</label>
             <select id="keyCountSelect">
                 <option value="2">2</option>
                 <option value="4">4</option>
@@ -52,24 +52,24 @@
                 
             </select>
         </div>
-        <button id="startBtn">Generate Keys</button>
+        <button id="startBtn">ساخت کلید</button>
         
         <div id="progressContainer" class="hidden">
             <div class="progress-bar">
-                <div id="progressBar"></div>
+                <div id="progressBar">درحال انجام</div>
             </div>
             <div id="progressText">0%</div>
-            <div id="progressLog">Starting...</div>
+            <div id="progressLog">درحال شروع</div>
             <div id="countdownContainer">
-            <p>Next Step will start in: <span id="countdownTimer"></span> seconds </p>
+            <p>تست بعدی در<span id="countdownTimer"></span> ثانیه </p>
             </div>
         </div>
         <div id="keyContainer" class="hidden">
-            <h3 id="generatedKeysTitle" class="hidden">Generated Keys:</h3>
+            <h3 id="generatedKeysTitle" class="hidden">لیست کلید ها</h3>
             <div id="keysList"></div>
-            <button id="copyAllBtn" class="hidden">Copy All Keys</button>
-            <div id="copyStatus" class="hidden">Copied!</div>
-            <!-- <button id="generateMoreBtn">Generate More Keys</button> -->
+            <button id="copyAllBtn" class="hidden">کپی کردن</button>
+            <div id="copyStatus" class="hidden">کپی شد</div>
+            <!-- <button id="generateMoreBtn">ساخت کلید بیشتر</button> -->
         </div>
 
 
@@ -80,12 +80,12 @@
 
         <div class="mycodes">
             <p>
-                The Key Generation may take upto 10 mins<br>
-                If you feel its not working then <a href="https://telegram.me/Sam_Dm_bot">Contact Creator</a>
+ساخت کلید ممکن است تا 10 دقیقه هم زمان ببره و تایمر اصلی در این نسخه بشدت کاهش یافته است.
+برای اطلاعات حتما چنل سازنده را دنبال کن.
             </p>
-            <button id="ShowKeysBtn">My Codes</button>
+            <button id="ShowKeysBtn">تمامی کلید های من</button>
             <div id="generatedCodesContainer" style="display:none;">
-                <h3>Today's Generated Codes:</h3>
+                <h3>کلید های امروز ساخته شده ی من</h3>
                 <ul id="generatedCodesList"></ul>
             </div>
 
