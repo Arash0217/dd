@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    const MAX_KEYS_PER_GAME_PER_DAY = 12;
+    const MAX_KEYS_PER_GAME_PER_DAY = 100;
     //const EVENTS_DELAY = 20000;
 
     const games = {
@@ -85,6 +85,13 @@ document.addEventListener('DOMContentLoaded', () => {
             eventsDelay: 20000,
             attemptsNumber: 30,
 	},
+	12:{
+	    name: 'Hide Ball',
+            appToken: '4bf4966c-4d22-439b-8ff2-dc5ebca1a600',
+            promoId: '4bf4966c-4d22-439b-8ff2-dc5ebca1a600',
+            eventsDelay: 40000,
+            attemptsNumber: 30,
+	}
 	    
     };
 
@@ -427,4 +434,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     
-});
