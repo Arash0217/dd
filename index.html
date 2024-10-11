@@ -1,108 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ایردراپ به فارسی</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <title>دسترسی به صرافی OmpFinex</title>
+    <style>
+        body {
+            background-color: #000; /* رنگ پس‌زمینه مشکی */
+            color: #00FF00; /* رنگ متن سبز */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #00FF00; /* رنگ دکمه سبز */
+            color: black; /* رنگ متن دکمه مشکی */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #00CC00; /* رنگ دکمه هنگام هاور */
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>ایردراپ به فارسی</h1>
-        <div class="form-group">
-            <label for="gameSelect">انتخاب بازی</label>
-            <select id="gameSelect">
-                <option value="1">ZooPolis </option>
-                <option value="2">Chain Cube 2048</option>
-                <option value="3">Fluff Crusade (new)</option>
-                <option value="4">Train Miner</option>
-                <option value="5">Merge Away ⭐</option>
-                <option value="6">Twerk Race</option>
-                <option value="7">Polysphere</option>
-                <option value="8">Mow and Trim</option>
-                <option value="9">Tile Trio </option>
-                <option value="10">Stone Age </option>
-                <option value="11">Bouncemasters (NEW) </option>
-                <option value="12">Hide Ball (NEW) </option>
-         
-            
-            </select>
-        </div>
 
-        <div id="google_translate_element">language</div>
-        <script type="text/javascript">
-            function googleTranslateElementInit() {
-                new google.translate.TranslateElement({
-                    pageLanguage: 'en', 
-                    includedLanguages: 'en,hi,ta,ru,id,ha,pt', 
-                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-                }, 'google_translate_element');
-            }
-            
-        </script>
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-        
+    <h1>دسترسی به صرافی OmpFinex</h1>
+    <p>لطفاً برای دسترسی به صرافی OmpFinex، فیلترشکن خود را خاموش کنید.</p>
+    <button class="button" onclick="window.location.href='https://omp.exchange/referral/ZVHQUKI3G'">تایید</button>
 
-        
-        <div class="form-group">
-            <label id="keyCountLabel" for="keyCountSelect">تعداد کلید</label>
-            <select id="keyCountSelect">
-                <option value="2">2</option>
-                <option value="4">4</option>
-                <option value="6">6</option>
-                <option value="8">8</option>
-                
-            </select>
-        </div>
-        <button id="startBtn">ساخت کلید</button>
-        
-        <div id="progressContainer" class="hidden">
-            <div class="progress-bar">
-                <div id="progressBar">درحال انجام</div>
-            </div>
-            <div id="progressText">0%</div>
-            <div id="progressLog">درحال شروع</div>
-            <div id="countdownContainer">
-            <p>تست بعدی در<span id="countdownTimer"></span> ثانیه </p>
-            </div>
-        </div>
-        <div id="keyContainer" class="hidden">
-            <h3 id="generatedKeysTitle" class="hidden">لیست کلید ها</h3>
-            <div id="keysList"></div>
-            <button id="copyAllBtn" class="hidden">کپی کردن</button>
-            <div id="copyStatus" class="hidden">کپی شد</div>
-            <!-- <button id="generateMoreBtn">ساخت کلید بیشتر</button> -->
-        </div>
-
-
-        <label>
-            <input type="checkbox" id="logCheckbox"> Enable Logs
-        </label>
-        <textarea id="logArea" rows="3" readonly style="width: 100%; resize: none; font-size: 12px; display: none;"></textarea>
-
-        <div class="mycodes">
-            <p>
-ساخت کلید ممکن است تا 10 دقیقه هم زمان ببره و تایمر اصلی در این نسخه بشدت کاهش یافته است.
-برای اطلاعات حتما چنل سازنده را دنبال کن.
-            </p>
-            <button id="ShowKeysBtn">تمامی کلید های من</button>
-            <div id="generatedCodesContainer" style="display:none;">
-                <h3>کلید های امروز ساخته شده ی من</h3>
-                <ul id="generatedCodesList"></ul>
-            </div>
-
-        </div>
-         <div class="footer">
-            <a href="https://t.me/airdropbefarsi" target="_blank">
-                <button class="telegram-btn" id="channel1">کانال ما</button>
-            </a>
-            <a href="https://t.me/airdropofficialtel" target="_blank">
-                <button class="telegram-btn" id="channel2">گروه ما</button>
-            </a>
-        </div>
-    </div>
-    <script src="script.js"></script>
 </body>
-
 </html>
