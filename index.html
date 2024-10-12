@@ -6,68 +6,28 @@
     <title>ABF App</title>
     <style>
         body {
-            background-color: #000; /* رنگ پس‌زمینه مشکی */
-            color: #00FF00; /* رنگ متن سبز */
+            background-color: #000;
+            color: #00FF00;
             font-family: 'Arial', sans-serif;
             text-align: center;
             margin-top: 50px;
-            animation: fadeIn 1s;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        h1, h2 {
-            text-shadow: 0 0 10px #00FF00; /* سایه متن */
         }
         .button {
             padding: 10px 20px;
-            background-color: #00FF00; /* رنگ دکمه سبز */
-            color: black; /* رنگ متن دکمه مشکی */
+            background-color: #00FF00;
+            color: black;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
             margin-top: 20px;
-            transition: background-color 0.3s, transform 0.3s; /* انیمیشن دکمه */
-        }
-        .button:hover {
-            background-color: #00CC00; /* رنگ دکمه هنگام هاور */
-            transform: scale(1.05); /* بزرگ شدن دکمه هنگام هاور */
-        }
-        form {
-            margin-top: 20px;
-        }
-        input {
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            margin-bottom: 20px;
-            width: 80%;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            border: 2px solid #00FF00; /* حاشیه سبز */
-            border-radius: 10px; /* گوشه‌های گرد */
-            background-color: rgba(0, 0, 0, 0.7); /* پس‌زمینه نیمه شفاف */
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <h1>دسترسی به صرافی OmpFinex</h1>
-        <p>لطفاً برای دسترسی به صرافی ابتدا فیلترشکن خود را خاموش کنید</p>
-        <button class="button" onclick="window.location.href='https://omp.exchange/referral/ZVHQUKI3G'">صرافی omp</button>
-
-        <h2>ورود به حساب تونکیپر</h2>
-        <button class="button" onclick="window.location.href='https://wallet.tonkeeper.com'">ورود به تونی‌کیپر</button>
-
-        <button class="button" onclick="history.back()">بازگشت به مراحل قبلی</button>
-    </div>
-
+    <h1>دسترسی به صرافی OmpFinex</h1>
+    <p>لطفاً برای دسترسی به صرافی ابتدا فیلترشکن خود را خاموش کنید</p>
+    <button class="button" onclick="window.location.href='omp.html'">صرافی omp</button>
+    <button class="button" onclick="window.location.href='tonkeeper.html'">ورود به تونی‌کیپر</button>
 </body>
 </html>
